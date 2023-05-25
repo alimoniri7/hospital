@@ -13,7 +13,7 @@ import Topbar from "./components/layout/Topbar";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Topbar/>,
+    element: <Landing/>,
   },
 ]);
 
