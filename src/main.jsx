@@ -7,11 +7,13 @@ import {
 import "./index.css";
 
 import Landing from "./routes/landing";
+import BtnContained from "./components/buttons/BtnContained";
+import Topbar from "./components/layout/Topbar";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Landing />,
+    element: <Topbar/>,
   },
 ]);
 
