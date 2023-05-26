@@ -9,12 +9,17 @@ import "./index.css";
 import Landing from "./routes/landing";
 import BtnContained from "./components/buttons/BtnContained";
 import Topbar from "./components/layout/Topbar";
+import Dashboard from "./routes/dashboard";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Landing/>,
   },
+  {
+    path: '/dashboard',
+    element: <Dashboard/>
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

@@ -24,7 +24,7 @@ const BtnContained = ({ dark = false, children, onClick, href, className, disabl
       disabled= {disabled}
       type={type}
          onClick={clickHandler}
-         className={`${color}   inline-flex group items-center transition-all duration-200 ease-out justify-center px-4 py-2 m-1 cursor-pointer active:shadow-none shadow-lg overflow-hidden  ${className}`}
+         className={`${color} relative  inline-flex group items-center transition-all duration-200 ease-out justify-center px-4 py-2 m-1 cursor-pointer active:shadow-none shadow-lg overflow-hidden  ${className}`}
       >
          <span
             className={`${

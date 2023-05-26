@@ -101,7 +101,7 @@ useOnClickOutside(formRef,()=> setIsOpen(false))
          phoneValidation.isValid &&
          confirmationValidation.isValid
       ) {
-         navigate("/dashbord");
+         navigate("/dashboard");
       } else {
          alert("check out red fields");
       }
@@ -158,7 +158,7 @@ useOnClickOutside(formRef,()=> setIsOpen(false))
                         type="button"
                         onClick={sendConfirmation}
                         dark
-                        className="absolute -bottom-[0px] left-0 z-50 text-xs"
+                        className="!absolute -bottom-[0px] left-0 z-50 text-xs"
                      >
                         {isMessageSent ? `${String(timer)} ثانیه` : "ارسال کد"}
                      </BtnContained>
