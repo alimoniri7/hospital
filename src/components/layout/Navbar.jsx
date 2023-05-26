@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import BtnContained from "../buttons/BtnContained";
 import BtnBurger from "../buttons/BtnBurger";
 import MobileMenu from "./MobileMenu";
+import Regester from "../forms/regester";
 
 const Navbar = () => {
    const menu = [
@@ -29,11 +30,17 @@ const Navbar = () => {
    ];
 
    const [isOpen, setIsOpen] = useState(false)
+   const [isRegestrationOpen,setIsRegestrationOpen ] = useState(false)
+
+   const openForm = ()=>{
+      setIsRegestrationOpen(true)
+   }
 
 
    return (
-      <nav className="flex items-center justify-center w-full border-b-2 border-white-gray py-2 px-2">
+      <nav className="flex items-center justify-center w-full border-b-2 border-white-gray py-2 px-2 overflow-hidden">
          <div className="flex items-center justify-between container">
+            <Regester isOpen={isRegestrationOpen} setIsOpen={setIsRegestrationOpen}/>
             <BtnBurger isOpen={isOpen} setIsOpen={setIsOpen}/>
             <MobileMenu isOpen={isOpen} menu={menu}/>
             <div>
@@ -49,7 +56,7 @@ const Navbar = () => {
                </ul>
             </div>
             <div>
-                <BtnContained>ورود</BtnContained>
+                <BtnContained onClick={openForm}>ورود</BtnContained>
             </div> 
          </div>
       </nav>

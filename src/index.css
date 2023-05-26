@@ -13,4 +13,7 @@
     font-weight: 300;
     font-size: 14px;
   }
+  .light-box {
+    @apply absolute top-0 left-0 backdrop-blur-sm  bg-black/30 block  w-screen h-screen overflow-hidden
+  }
 }

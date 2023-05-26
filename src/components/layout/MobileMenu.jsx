@@ -8,10 +8,10 @@ import BtnContained from "../buttons/BtnContained";
 
 
 const MobileMenu = ({ menu, isOpen }) => {
-    const lightBox = 'absolute top-0 left-0 backdrop-blur-sm  bg-black/30 block sm:hidden  w-screen h-screen overflow-hidden'
     const paper = 'w-60 bg-white-gray transition-all duration-500 ease-out  h-full'
+
    return (
-      <div className={`${lightBox} ${isOpen ? 'translate-x-0  ' : 'translate-x-full'}`}>
+      <div className={`light-box sm:hidden ${isOpen ? 'translate-x-0  ' : 'translate-x-full'}`}>
          <div className={`${paper} ${isOpen ? 'translate-x-0' : "translate-x-full"}`}>
             <div className="mt-16" >
                <ul className="flex flex-col  gap-4 pt-5">
