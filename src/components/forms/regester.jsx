@@ -108,7 +108,7 @@ useOnClickOutside(formRef,()=> setIsOpen(false))
    };
 
    return (
-      <div  className={`light-box z-20 flex flex-col items-center justify-center transition-none duration-0 ${isOpen ? 'translate-y-0  ' : 'translate-y-full'}`}>
+      <div  className={`light-box z-20 flex flex-col items-center justify-center transition-none duration-0 ${isOpen ? 'translate-x-0  ' : 'translate-x-full'}`}>
          <div ref={formRef} className={`bg-white-gray flex flex-col w-[450px] max-w-[90%] divide-gray divide-y p-10 transition-all ease-out duration-500  ${isOpen ? 'translate-y-0 opacity-100  ' : 'translate-y-20 opacity-5'}`}>
             <div className="py-2 text-3xl text-dark-gray font-bold ">
                ورود به حساب

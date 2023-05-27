@@ -1,42 +1,33 @@
 import React from "react";
-import BtnContained from "../components/buttons/BtnContained";
-import ResultBox from "../components/dashboard/ResultBox";
-
+import SidbarMenu from "../components/dashboard/SidbarMenu";
+import ServiceHistoryPage from "../components/dashboard/ServiceHistoryPage";
+import { useParams } from "react-router-dom";
+import TakeTurnPage from "../components/dashboard/TakeTurnPage";
 const Dashboard = () => {
    const paper = "w-60 bg-white-gray  h-screen";
-   const menu = [
-      {
-         label: "جوابدهی",
-         path: "/aboutus",
-      },
-      {
-         label: "نوبت دهی",
-         path: "contactus",
-      },
-   ];
+
+
+   const { path} = useParams()
+
+   console.log(path);
+
    return (
-      <div className="w-screen h-screen flex gap-5">
+      <div className="w-screen h-screen flex gap-10 ">
          <div className={`${paper}`}>
             <div>
                <h1 className="font-[playfair] font-black text-4xl text-center py-5">
                   Hospital
                </h1>
-               <ul className="flex flex-col  gap-4 pt-5">
-                  {menu.map((item) => (
-                     <li key={item.label}>
-                        <BtnContained
-                           dark
-                           className="text-dark-gray font-medium z-10 w-full "
-                        >
-                           {item.label}
-                        </BtnContained>
-                     </li>
-                  ))}
-               </ul>
+               <SidbarMenu/>
             </div>
          </div>
-         <div>
-            <ResultBox/>
+         <div className="w-full h-full  overflow-x-hidden">
+            {
+                path === 'results' && <ServiceHistoryPage/>
+            }
+            {
+                path === 'take-turn' && <TakeTurnPage/>
+            }
          </div>
       </div>
    );
