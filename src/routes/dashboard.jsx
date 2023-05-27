@@ -9,10 +9,9 @@ const Dashboard = () => {
 
    const { path} = useParams()
 
-   console.log(path);
 
    return (
-      <div className="w-screen h-screen flex gap-10 ">
+      <div className="w-screen h-screen flex gap-5 ">
          <div className={`${paper}`}>
             <div>
                <h1 className="font-[playfair] font-black text-4xl text-center py-5">
