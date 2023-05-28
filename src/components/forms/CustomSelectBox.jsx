@@ -148,6 +148,7 @@ const CustomSelectBox = ({
   return (
     <>
       <Select
+      className={`!w-full`}
         onClick={openOptions}
         width={width}
         height={height}
@@ -155,6 +156,7 @@ const CustomSelectBox = ({
         ref={selectBox}
       >
         <input
+        readOnly
           ref={input}
           name={name}
           id={id}

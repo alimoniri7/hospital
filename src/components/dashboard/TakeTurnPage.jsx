@@ -7,6 +7,7 @@ import { people } from "../../../data";
 const TakeTurnPage = () => {
     const [isAddPersonOpen, setIsAddPersonOpen] = useState(false)
     const [selectedPerson, setSelectedPerson] = useState(people[0])
+    const [patients , setPatients] = useState(people)
 
     const opneAddPeson = ()=> {
         setIsAddPersonOpen(true)
@@ -26,9 +27,9 @@ const TakeTurnPage = () => {
                   <h3 className="text-lg font-medium">لطفا بیمار را انتخاب کنید:</h3>
                   <BtnContained onClick={opneAddPeson} dark>+ افزودن بیمار جدید</BtnContained>
                </div>
-               <AddPerson isOpen={isAddPersonOpen} setIsOpen={setIsAddPersonOpen}/>
+               <AddPerson setPerson={setPatients} isOpen={isAddPersonOpen} setIsOpen={setIsAddPersonOpen}/>
                <div className="flex gap-5 flex-wrap">
-                  {people.map((person) => (
+                  {patients.map((person) => (
                      <PersonBox key={person.id} onClick={()=>selectPerson(person)} person={person} selected={person.id===selectedPerson.id ? true : false} />
                   ))}
                </div>

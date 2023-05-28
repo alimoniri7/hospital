@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import useInputHandler from "../../../../hooks/useInputHandler";
 import useValidation from "../../../../hooks/useValidation";
 import CustomSelectBox from "../../forms/CustomSelectBox";
@@ -6,44 +6,54 @@ import useOnClickOutside from "../../../../hooks/useClickOutside";
 import X from "../../../assets/icons/X";
 import BtnContained from "../../buttons/BtnContained";
 import Input from "../../forms/Input";
+import styled from "styled-components";
+import { v4 as uuidv4 } from 'uuid';
+
+const InputTag = styled.div`
+    padding: 4px 6px 4px 6px ;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    background-color: #F8F8F8;
+`
 
 
-const AddPerson = ({ isOpen, setIsOpen }) => {
-    const [isMessageSend, SetIsMessageSend] = useState(false)
+const AddPerson = ({ isOpen, setIsOpen, setPerson }) => {
    // input Handlers
-   const [name, nameHandler] = useInputHandler();
-   const [gender, genderHandler] = useInputHandler();
-   const [phone, phoneHandler] = useInputHandler();
-   const [age, ageHandler] = useInputHandler();
-   const [height, heightHandler] = useInputHandler();
-   const [weight, weightHandler] = useInputHandler();
-   const [confirmation, confirmationHandler] = useInputHandler()
+   const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    age: '',
+    height: '',
+    weight: '',
+    gender:'مرد'
+   })
+   const onChangeHandler = (e)=>{
+    setFormData(prev=> ({
+        ...prev,
+        [e.target.name] : e.target.value
+    }))
+   }
    // End...
+
 
    // Validation
    const [activate, setActivate] = useState({
       name: false,
       phone: false,
-      gender: false,
       age: false,
       height: false,
       weight: false,
-      confirmation: false
    });
    const focusHandler = (e) => {
       setActivate({ ...activate, [e.target.name]: true });
    };
 
    const phoneRegex = /^(\+98|0)?9\d{9}$/;
-   const confirmationRegex = /^([0-9]){5}$/;
-   const [nameValidation, checkName] = useValidation(name);
-   const [phoneValidation, checkPhone] = useValidation(phone, phoneRegex);
-   const [ageValidation, checkAge] = useValidation(age);
-   const [heightValidation, checkHeight] = useValidation(height);
-   const [weightValidation, checkWeight] = useValidation(weight);
-   const [confirmationValidation, checkConfirmation] = useValidation(confirmation, confirmationRegex)
+   const [nameValidation, checkName] = useValidation(formData.name);
+   const [phoneValidation, checkPhone] = useValidation(formData.phone, phoneRegex);
+   const [ageValidation, checkAge] = useValidation(formData.age);
+   const [heightValidation, checkHeight] = useValidation(formData.height);
+   const [weightValidation, checkWeight] = useValidation(formData.weight);
 
-   console.log(nameValidation.isValid);
 
    // End...
 
@@ -56,17 +66,78 @@ const AddPerson = ({ isOpen, setIsOpen }) => {
    useOnClickOutside(formRef, () => setIsOpen(false));
    // End
 
-   console.log(gender);
+   const submitHandler = (e) => {
+    e.preventDefault();
+    setActivate({
+        name: true,
+        phone: true,
+        age: true,
+        height: true,
+        weight: true,
+    });
+    checkPhone();
+    checkName();
+    checkAge();
+    checkHeight()
+    checkWeight()
+
+    if (
+       nameValidation.isValid &&
+       phoneValidation.isValid &&
+       weightValidation.isValid &&
+       heightValidation.isValid &&
+       ageValidation.isValid
+
+    ) {
+       setPerson(prev=>([
+        ...prev,
+        {
+            ...formData,
+            id: uuidv4()
+        }
+       ]))
+       setIsOpen(false)
+       setFormData({
+        name: '',
+        phone: '',
+        age: '',
+        height: '',
+        weight: '',
+        gender:'مرد'
+       })
+       setActivate({
+        name: false,
+        phone: false,
+        age: false,
+        height: false,
+        weight: false,
+       })
+       
+    } else {
+       alert("check out red fields");
+    }
+ };
+
+ useEffect(()=>{
+    if(formData.age===''){
+        checkAge()
+        checkHeight()
+        checkName()
+        checkWeight()
+        checkPhone()
+    }
+    console.log('running');
+ },[formData.phone])
 
    return (
       <div
-         className={`light-box z-20 flex flex-col items-center justify-center transition-none duration-0 ${
+         className={`light-box z-20 flex flex-col items-center justify-center transition-none duration-0 overflow-y-scroll ${
             isOpen ? "translate-x-0  " : "translate-x-full"
          }`}
       >
          <div
             ref={formRef}
-            className={`bg-white-gray flex flex-col w-[450px] max-w-[90%] divide-gray divide-y p-10 transition-all ease-out duration-500  ${
+            className={` mt-3 bg-white-gray flex flex-col w-[450px] max-w-[90%] divide-gray divide-y p-10 transition-all ease-out duration-500  ${
                isOpen
                   ? "translate-y-0 opacity-100  "
                   : "translate-y-20 opacity-5"
@@ -81,11 +152,11 @@ const AddPerson = ({ isOpen, setIsOpen }) => {
             >
                <X />
             </button>
-            <form className="py-3 flex flex-col gap-3" >
+            <form className="py-3 flex flex-col gap-3" onSubmit={submitHandler} >
             <Input
                   type="text"
-                  value={name}
-                  onChange={nameHandler}
+                  value={formData.name}
+                  onChange={onChangeHandler}
                   activate={activate.name}
                   onFocus={focusHandler}
                   isValid={nameValidation.isValid}
@@ -96,8 +167,8 @@ const AddPerson = ({ isOpen, setIsOpen }) => {
                />
             <Input
                   type="number"
-                  value={phone}
-                  onChange={phoneHandler}
+                  value={formData.phone}
+                  onChange={onChangeHandler}
                   activate={activate.phone}
                   onFocus={focusHandler}
                   isValid={phoneValidation.isValid}
@@ -108,67 +179,49 @@ const AddPerson = ({ isOpen, setIsOpen }) => {
                />
             <Input
                   type="number"
-                  value={age}
-                  onChange={ageHandler}
+                  value={formData.age}
+                  onChange={onChangeHandler}
                   activate={activate.age}
                   onFocus={focusHandler}
                   isValid={ageValidation.isValid}
                   checkValidation={checkAge}
-                  placeholder="سن"
-                  label="سن بیمار"
+                  placeholder="سن بیمار"
+                  label="سن"
                   name="age"
                />
             <Input
                   type="number"
-                  value={height}
-                  onChange={heightHandler}
+                  value={formData.height}
+                  onChange={onChangeHandler}
                   activate={activate.height}
                   onFocus={focusHandler}
                   isValid={heightValidation.isValid}
                   checkValidation={checkHeight}
-                  placeholder="قد"
-                  label="قد بیمار"
+                  placeholder="قد بیمار"
+                  label="قد"
                   name="height"
+                  node={<InputTag className="!absolute bottom-1 left-2 z-50 ">سانتی متر</InputTag>}
                />
             <Input
                   type="number"
-                  value={weight}
-                  onChange={weightHandler}
+                  value={formData.weight}
+                  onChange={onChangeHandler}
                   activate={activate.weight}
                   onFocus={focusHandler}
                   isValid={weightValidation.isValid}
                   checkValidation={checkWeight}
-                  placeholder="وزن"
-                  label="وزن بیمار"
+                  placeholder="وزن بیمار"
+                  label="وزن"
                   name="weight"
+                  node={<InputTag className="!absolute bottom-1 left-2 z-50 ">کیلوگرم</InputTag>}
                />
-               <CustomSelectBox value={gender} onChange={genderHandler} options={genders} placehodler="اتخاب جنسیت" />
+               <div>
+                <p>جنسیت:</p>
+               <CustomSelectBox value={formData.gender} onChange={onChangeHandler} options={genders} placehodler="اتخاب جنسیت" />
+               </div>
 
-               {/* <Input
-                  className="mt-7"
-                  type="number"
-                  value={confirmation}
-                  onChange={confirmationHandler}
-                  activate={activate.confirmation}
-                  onFocus={focusHandler}
-                  isValid={confirmationValidation.isValid}
-                  checkValidation={checkConfirmation}
-                  placeholder="کد ارسالی را وارد کنید"
-                  label="کد ارسالی را وارد کنید"
-                  name="confirmation"
-                  node={
-                     <BtnContained
-                     disabled={isMessageSent? true : false}
-                        type="button"
-                        onClick={sendConfirmation}
-                        dark
-                        className="!absolute -bottom-[0px] left-0 z-50 text-xs"
-                     >
-                        {isMessageSent ? `${String(timer)} ثانیه` : "ارسال کد"}
-                     </BtnContained>
-                  }
-               /> */}
-               <BtnContained type="submit" dark className="w-full mt-5">
+
+               <BtnContained type="submit" dark className="w-full mt-8">
                  افزودن بیمار
                </BtnContained>
             </form>
