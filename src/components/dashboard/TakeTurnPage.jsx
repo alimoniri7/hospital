@@ -1,38 +1,17 @@
 import React, { useState } from "react";
 import PersonBox from "./takeTurnForm/personBox";
 import BtnContained from "../buttons/BtnContained";
+import AddPerson from "./takeTurnForm/AddPerson";
+import { people } from "../../../data";
 
 const TakeTurnPage = () => {
-   const people = [
-      {
-        id: 1,
-         name: "علی منیری",
-         gender: "مرد",
-         phone: "09123456789",
-         age: "20",
-         weight: "70",
-         height: "182",
-      },
-      {
-        id: 2,
-         name: "علی منیری",
-         gender: "مرد",
-         phone: "09123456789",
-         age: "20",
-         weight: "70",
-         height: "182",
-      },
-      {
-        id: 3,
-         name: "علی منیری",
-         gender: "مرد",
-         phone: "09123456789",
-         age: "20",
-         weight: "70",
-         height: "182",
-      },
-   ];
-   const [selectedPerson, setSelectedPerson] = useState(people[0])
+    const [isAddPersonOpen, setIsAddPersonOpen] = useState(false)
+    const [selectedPerson, setSelectedPerson] = useState(people[0])
+
+    const opneAddPeson = ()=> {
+        setIsAddPersonOpen(true)
+    }
+  
    const selectPerson = (person) =>{
     setSelectedPerson(person)
    }
@@ -45,11 +24,12 @@ const TakeTurnPage = () => {
             <div className="mt-5">
                <div className="flex justify-between items-center">
                   <h3 className="text-lg font-medium">لطفا بیمار را انتخاب کنید:</h3>
-                  <BtnContained dark>+ افزودن بیمار جدید</BtnContained>
+                  <BtnContained onClick={opneAddPeson} dark>+ افزودن بیمار جدید</BtnContained>
                </div>
+               <AddPerson isOpen={isAddPersonOpen} setIsOpen={setIsAddPersonOpen}/>
                <div className="flex gap-5 flex-wrap">
                   {people.map((person) => (
-                     <PersonBox onClick={()=>selectPerson(person)} person={person} selected={person.id===selectedPerson.id ? true : false} />
+                     <PersonBox key={person.id} onClick={()=>selectPerson(person)} person={person} selected={person.id===selectedPerson.id ? true : false} />
                   ))}
                </div>
             </div>

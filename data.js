@@ -42,5 +42,34 @@ const results = [
         date: '1399/12/12'
     },
 
-]
-export {results}
+];
+const people = [
+    {
+      id: 1,
+       name: "علی منیری",
+       gender: "مرد",
+       phone: "09123456789",
+       age: "20",
+       weight: "70",
+       height: "182",
+    },
+    {
+      id: 2,
+       name: "علی منیری",
+       gender: "مرد",
+       phone: "09123456789",
+       age: "20",
+       weight: "70",
+       height: "182",
+    },
+    {
+      id: 3,
+       name: "علی منیری",
+       gender: "مرد",
+       phone: "09123456789",
+       age: "20",
+       weight: "70",
+       height: "182",
+    },
+ ];
+export {results, people}
