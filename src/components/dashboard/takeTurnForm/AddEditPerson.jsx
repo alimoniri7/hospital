@@ -16,15 +16,16 @@ const InputTag = styled.div`
 `
 
 
-const AddPerson = ({ isOpen, setIsOpen, setPerson }) => {
+const AddPerson = ({ isOpen, setIsOpen, setPerson, existingPerson }) => {
    // input Handlers
    const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    age: '',
-    height: '',
-    weight: '',
-    gender:'مرد'
+    id: existingPerson ? existingPerson.id : uuidv4(),
+    name: existingPerson ? existingPerson.name : '',
+    phone: existingPerson ? existingPerson.phone : '',
+    age: existingPerson ? existingPerson.age : '',
+    height: existingPerson ? existingPerson.height : '',
+    weight: existingPerson ? existingPerson.weight : '',
+    gender:existingPerson ? existingPerson.gender : 'مرد'
    })
    const onChangeHandler = (e)=>{
     setFormData(prev=> ({
@@ -89,30 +90,44 @@ const AddPerson = ({ isOpen, setIsOpen, setPerson }) => {
        ageValidation.isValid
 
     ) {
-       setPerson(prev=>([
-        ...prev,
-        {
-            ...formData,
-            id: uuidv4()
+        setIsOpen(false)
+        if(!existingPerson){
+            setPerson(prev=>([
+             ...prev,
+             {
+                 ...formData,
+             }
+            ]))
+            setFormData({
+             name: '',
+             phone: '',
+             age: '',
+             height: '',
+             weight: '',
+             gender:'مرد'
+            })
+            setActivate({
+             name: false,
+             phone: false,
+             age: false,
+             height: false,
+             weight: false,
+            })
+        }else{
+            setPerson(prev=>{
+                let index = prev.findIndex(item=> item.id === formData.id);
+                prev.splice(index, 1)
+                return([
+                    ...prev,
+                    {
+                        ...formData
+                    }
+                ])
+            })
+            
         }
-       ]))
-       setIsOpen(false)
-       setFormData({
-        name: '',
-        phone: '',
-        age: '',
-        height: '',
-        weight: '',
-        gender:'مرد'
-       })
-       setActivate({
-        name: false,
-        phone: false,
-        age: false,
-        height: false,
-        weight: false,
-       })
-       
+        
+        
     } else {
        alert("check out red fields");
     }
@@ -128,6 +143,14 @@ const AddPerson = ({ isOpen, setIsOpen, setPerson }) => {
     }
     console.log('running');
  },[formData.phone])
+
+ useEffect(()=>{
+    checkAge()
+    checkHeight()
+    checkName()
+    checkWeight()
+    checkPhone()
+ },[])
 
    return (
       <div

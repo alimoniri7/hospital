@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PersonBox from "./takeTurnForm/personBox";
 import BtnContained from "../buttons/BtnContained";
-import AddPerson from "./takeTurnForm/AddPerson";
+import AddPerson from "./takeTurnForm/AddEditPerson";
 import { people } from "../../../data";
 
 const TakeTurnPage = () => {
@@ -30,7 +30,7 @@ const TakeTurnPage = () => {
                <AddPerson setPerson={setPatients} isOpen={isAddPersonOpen} setIsOpen={setIsAddPersonOpen}/>
                <div className="flex gap-5 flex-wrap">
                   {patients.map((person) => (
-                     <PersonBox key={person.id} onClick={()=>selectPerson(person)} person={person} selected={person.id===selectedPerson.id ? true : false} />
+                     <PersonBox key={person.id} setPerson={setPatients} onClick={()=>selectPerson(person)} person={person} selected={person.id===selectedPerson.id ? true : false} />
                   ))}
                </div>
             </div>
