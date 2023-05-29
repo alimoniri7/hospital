@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import useInputHandler from "../../../../hooks/useInputHandler";
 import useValidation from "../../../../hooks/useValidation";
 import CustomSelectBox from "../../forms/CustomSelectBox";
 import useOnClickOutside from "../../../../hooks/useClickOutside";
@@ -167,7 +166,9 @@ const AddPerson = ({ isOpen, setIsOpen, setPerson, existingPerson }) => {
             }`}
          >
             <div className="py-2 text-3xl text-dark-gray font-bold ">
-               افزودن بیمار جدید{" "}
+               {
+                  existingPerson ? 'ویرایش اطلاعات' : 'افزودن بیمار جدید'
+               }
             </div>
             <button
                onClick={() => setIsOpen(false)}
@@ -240,12 +241,14 @@ const AddPerson = ({ isOpen, setIsOpen, setPerson, existingPerson }) => {
                />
                <div>
                 <p>جنسیت:</p>
-               <CustomSelectBox value={formData.gender} onChange={onChangeHandler} options={genders} placehodler="اتخاب جنسیت" />
+               <CustomSelectBox className={'!w-full'} value={formData.gender} onChange={onChangeHandler} options={genders} placehodler="اتخاب جنسیت" name='gender' />
                </div>
 
 
                <BtnContained type="submit" dark className="w-full mt-8">
-                 افزودن بیمار
+                  {
+                     existingPerson ? 'اعمال تغییرات' : 'افزودن بیمار'
+                  }
                </BtnContained>
             </form>
          </div>

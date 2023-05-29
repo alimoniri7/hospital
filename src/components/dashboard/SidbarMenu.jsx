@@ -16,7 +16,7 @@ const SidbarMenu = () => {
               },
               {
                  label: "سوابق نوبت ها",
-                 path: "/dashboard/take-turn-hostory",
+                 path: "/dashboard/take-turn-history",
               },
            ],
         },

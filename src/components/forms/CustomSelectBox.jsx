@@ -96,7 +96,8 @@ const CustomSelectBox = ({
   id,
   value,
   placehodler = "گزینه ها",
-  options=['option 1', 'option 2']
+  options=['option 1', 'option 2'],
+  className
 }) => {
   const [selectedValue, setSelectedValue] = useState(value);
   const [isOpen, setIsOpen] = useState(false);
@@ -148,7 +149,7 @@ const CustomSelectBox = ({
   return (
     <>
       <Select
-      className={`!w-full`}
+      className={className}
         onClick={openOptions}
         width={width}
         height={height}
@@ -168,7 +169,7 @@ const CustomSelectBox = ({
 
         {/* handle placeholder and selected option */}
         {selectedValue ? (
-          <p>{selectedValue}</p>
+          <p>{value}</p>
         ) : (
           <p className="placeholder">{placehodler}</p>
         )}

@@ -3,6 +3,7 @@ import SidbarMenu from "../components/dashboard/SidbarMenu";
 import ServiceHistoryPage from "../components/dashboard/ServiceHistoryPage";
 import { useParams } from "react-router-dom";
 import TakeTurnPage from "../components/dashboard/TakeTurnPage";
+import TurnHistoryPage from "../components/dashboard/TurnHistoryPage";
 const Dashboard = () => {
    const paper = "w-60 bg-white-gray  h-screen";
 
@@ -26,6 +27,9 @@ const Dashboard = () => {
             }
             {
                 path === 'take-turn' && <TakeTurnPage/>
+            }
+            {
+                path === 'take-turn-history' && <TurnHistoryPage/>
             }
          </div>
       </div>
