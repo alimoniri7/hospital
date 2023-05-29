@@ -4,23 +4,16 @@ import ServiceHistoryPage from "../components/dashboard/ServiceHistoryPage";
 import { useParams } from "react-router-dom";
 import TakeTurnPage from "../components/dashboard/TakeTurnPage";
 import TurnHistoryPage from "../components/dashboard/TurnHistoryPage";
+import SidBar from "../components/dashboard/SidBar";
 const Dashboard = () => {
-   const paper = "w-60 bg-white-gray  h-screen";
 
 
    const { path} = useParams()
 
 
    return (
-      <div className="w-screen h-screen flex gap-5 ">
-         <div className={`${paper}`}>
-            <div>
-               <h1 className="font-[playfair] font-black text-4xl text-center py-5">
-                  Hospital
-               </h1>
-               <SidbarMenu/>
-            </div>
-         </div>
+      <div className="w-screen h-screen transition-none flex md:flex-row flex-col items-start md:gap-5 ">
+         <SidBar/>
          <div className="w-full h-full  overflow-x-hidden">
             {
                 path === 'results' && <ServiceHistoryPage/>

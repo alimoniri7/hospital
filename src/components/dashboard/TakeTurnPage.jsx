@@ -35,8 +35,8 @@ const TakeTurnPage = () => {
    };
 
    return (
-      <div className="w-full mt-8 flex items-end">
-         <div className=" w-[97%] h-[95%] bg-white-gray rounded-t-3xl shadow-slate-950 p-5 pb-16">
+      <div className="w-full mt-8 flex items-end justify-center md:justify-start">
+         <div className=" w-[97%] h-[93%] bg-white-gray rounded-t-3xl shadow-slate-950 p-5 pb-16">
             {/* header */}
             <h1 className="text-3xl px-5 pt-3 border-b-light-gray border-b-2">
                دریافت نوبت

@@ -8,12 +8,15 @@
 
 
 @layer base {
+  *{
+    transition: all ease-in-out 50ms;
+  }
   body {
     font-family: 'tt';
     font-weight: 300;
     font-size: 14px;
   }
   .light-box {
-    @apply absolute top-0 left-0 backdrop-blur-sm  bg-black/30 block  w-screen h-screen overflow-hidden
+    @apply absolute top-0 left-0 backdrop-blur-sm  bg-black/30 block  w-screen min-h-screen h-full overflow-hidden
   }
 }
