@@ -10,7 +10,7 @@ import Slider from './slider/Slider';
 
 const Header = () => {
     return (
-        <header className=' container flex gap-6 flex-col lg:flex-row mx-auto mt-10 lg:px-16 px-5 '>
+        <header className=' container flex gap-6 flex-col lg:flex-row mx-auto mt-10 lg:px-16 px-5  pb-10'>
             <div className='w-full lg:w-1/2 aspect-square '>
                 <Slider/>
             </div>

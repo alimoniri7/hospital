@@ -1,6 +1,9 @@
 import React from 'react';
 
+// Hooks
 import { useSwiper } from "swiper/react";
+
+// Icons
 import ArrowDropUp from "../../assets/icons/ArrowDropUp";
 import BtnContained from '../buttons/BtnContained';
 

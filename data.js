@@ -6,7 +6,7 @@ const results = [
       date: "1401/2/17",
    },
    {
-      name: "City Scan",
+      name: "CT Scan",
       details: "سیتی اسکن از مغز",
       resultStatus: "آماده",
       date: "1400/9/30",
@@ -30,7 +30,7 @@ const results = [
       date: "1400/6/19",
    },
    {
-      name: "City Scan",
+      name: "CT Scan",
       details: " ناحیه گردن",
       resultStatus: "آماده",
       date: "1400/2/1",

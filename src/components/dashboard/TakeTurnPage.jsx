@@ -1,11 +1,15 @@
 import React, { useState } from "react";
+
+// Components
 import PersonBox from "./takeTurnForm/personBox";
 import BtnContained from "../buttons/BtnContained";
 import AddPerson from "./takeTurnForm/AddEditPerson";
-import { people } from "../../../data";
 import CustomSelectBox from "../forms/CustomSelectBox";
 import DatePicker from "../forms/DatePicker";
 import AssetPicker from "../forms/AssetPicker";
+
+// Data
+import { people } from "../../../data";
 
 const TakeTurnPage = () => {
    const [isAddPersonOpen, setIsAddPersonOpen] = useState(false);

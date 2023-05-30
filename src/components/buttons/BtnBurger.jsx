@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 
 
 const BtnBurger = ({isOpen , setIsOpen, className, dashboard = false}) => {
-//   const [isOpen, setIsOpen] = useState(false);
   const genericHamburgerLine = `h-0.5 w-8 my-1 rounded-full  transition ease transform duration-300`;
 
   return (

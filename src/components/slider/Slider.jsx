@@ -1,8 +1,10 @@
 import React from "react";
-import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from "swiper";
 
+// Swiper Components & Tools
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Scrollbar, A11y, Autoplay } from "swiper";
 
+// Images
 import MRI from "../../assets/images/mri.jpg";
 import BloodTest from "../../assets/images/SBjpg.jpg";
 import sergury from "../../assets/images/rooms.jpg";
@@ -12,7 +14,8 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import BtnContained from "../buttons/BtnContained";
+
+
 import SliderBtn from "./SliderBtn";
 
 const Slider = () => {

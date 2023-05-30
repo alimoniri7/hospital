@@ -1,15 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
+
+// Components
 import SidbarMenu from "./SidbarMenu";
-import { useState } from "react";
 import BtnBurger from "../buttons/BtnBurger";
+
+// Icons
 import Profile from "../../assets/icons/Profile";
+import { useNavigate } from "react-router-dom";
 
 const SidBar = () => {
+   const navigate = useNavigate()
    const paper = "md:w-60 w-full bg-white-gray  md:h-screen ";
    const [isOpen, setIsOpne] = useState(false);
-   const toggleMenu = () => {
-      setIsOpne((prev) => !prev);
-   };
+
 
    return (
       <div className={`${paper} `}>
@@ -19,8 +22,8 @@ const SidBar = () => {
                     <BtnBurger dashboard isOpen={isOpen} setIsOpen={setIsOpne} />
                 </div>
                <h1
-                  onClick={toggleMenu}
-                  className="font-[playfair] font-black text-4xl text-center py-4 z-40 w-1/3 md:w-auto"
+                  onClick={()=> navigate('/') }
+                  className="font-[playfair] font-black text-4xl text-center py-4 z-40 w-1/3 md:w-auto cursor-pointer"
                >
                   Hospital
                </h1>

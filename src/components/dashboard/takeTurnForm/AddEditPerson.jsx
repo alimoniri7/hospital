@@ -1,10 +1,18 @@
 import React, { useEffect, useRef, useState } from "react";
+
+// Hooks
 import useValidation from "../../../../hooks/useValidation";
-import CustomSelectBox from "../../forms/CustomSelectBox";
 import useOnClickOutside from "../../../../hooks/useClickOutside";
-import X from "../../../assets/icons/X";
+
+// Components
+import CustomSelectBox from "../../forms/CustomSelectBox";
 import BtnContained from "../../buttons/BtnContained";
 import Input from "../../forms/Input";
+
+// Icons
+import X from "../../../assets/icons/X";
+
+// Tools
 import styled from "styled-components";
 import { v4 as uuidv4 } from 'uuid';
 import { toast } from "react-toastify";
@@ -54,8 +62,6 @@ const AddPerson = ({ isOpen, setIsOpen, setPerson, existingPerson }) => {
    const [ageValidation, checkAge] = useValidation(formData.age);
    const [heightValidation, checkHeight] = useValidation(formData.height);
    const [weightValidation, checkWeight] = useValidation(formData.weight);
-
-
    // End...
 
    // data
@@ -137,6 +143,7 @@ const AddPerson = ({ isOpen, setIsOpen, setPerson, existingPerson }) => {
     }
  };
 
+ // turn all isValid s to false after submit form
  useEffect(()=>{
     if(formData.age===''){
         checkAge()
@@ -154,7 +161,7 @@ const AddPerson = ({ isOpen, setIsOpen, setPerson, existingPerson }) => {
     checkWeight()
     checkPhone()
  },[])
-
+// End
    return (
       <div
          className={`light-box z-20 flex flex-col items-center justify-center transition-none duration-0 overflow-y-scroll ${

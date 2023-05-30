@@ -1,5 +1,9 @@
 import React from "react";
+
+// Data
 import { turnHistory } from "../../../data";
+
+// Components
 import TurnHistoryBox from "./turnHistory/turnHistoryBox";
 
 const TurnHistoryPage = () => {

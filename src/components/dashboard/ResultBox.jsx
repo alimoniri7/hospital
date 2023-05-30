@@ -1,13 +1,8 @@
 import React from 'react';
+// Components
 import BtnContained from '../buttons/BtnContained';
 
 const ResultBox = ({data}) => {
-    // const data = {
-    //     name: 'MRI',
-    //     details: 'ام ار  من تمینبت منبتنبخظ خه میس نتمبن تمبت ه کشم هبک مهب سبخ هبخ هبخهای تم دست و شکم',
-    //     resultStatus: 'آماده',
-    //     date: '1399/2/12'
-    // }
     return (
         <div className={`w-72 h-64 rounded-b-lg mt-5 ${data.resultStatus === 'آماده' && 'bg-ok'} ${data.resultStatus === 'در صف بررسی' && 'bg-yellow'} ${data.resultStatus === 'لغو شده' && 'bg-error'}`}>
             <div className='bg-white-gray w-full h-[95%] rounded-b-lg flex flex-col items-center' >

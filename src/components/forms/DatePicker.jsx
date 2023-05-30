@@ -1,7 +1,6 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import CustomSelectBox from "./CustomSelectBox";
 import { dates } from "../../../data";
-import { useEffect } from "react";
 
 const DatePicker = () => {
    const months = dates.map((item) => item.month);
@@ -37,7 +36,6 @@ const DatePicker = () => {
       }
    },  [selectedmonth, selectedDay]);
    
-   console.log(selectedDay, selectedHour, selectedmonth);
 
    return (
       <div className=" flex items-center  ">

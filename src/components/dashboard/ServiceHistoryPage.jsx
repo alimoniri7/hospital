@@ -1,5 +1,9 @@
 import React from 'react';
+
+// Components
 import ResultBox from './ResultBox';
+
+// Data
 import { results } from "../../../data";
 
 

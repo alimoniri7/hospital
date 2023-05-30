@@ -1,11 +1,19 @@
 import React, { useState, useEffect, useRef } from "react";
+
+// Hooks
 import useInputHandler from "../../../hooks/useInputHandler";
-import BtnContained from "../buttons/BtnContained";
 import useValidation from "../../../hooks/useValidation";
-import Input from "./Input";
 import { useNavigate } from "react-router-dom";
 import useOnClickOutside from "../../../hooks/useClickOutside";
+
+// Components
+import BtnContained from "../buttons/BtnContained";
+import Input from "./Input";
+
+// Icons
 import X from "../../assets/icons/X";
+
+// Tools
 import { toast } from "react-toastify";
 
 const Regester = ({ isOpen, setIsOpen }) => {
@@ -103,7 +111,7 @@ useOnClickOutside(formRef,()=> setIsOpen(false))
       ) {
          toast.success('وارد شدید!')
          setTimeout(()=>{
-            navigate("/dashboard");
+            navigate("/dashboard/results");
 
          },1000)
       } else {

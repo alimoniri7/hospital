@@ -1,9 +1,19 @@
-import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const BtnContained = ({ dark = false, children, onClick, href, className, disabled, type, iconButton }) => {
-
+const BtnContained = ({
+   dark = false,
+   children,
+   onClick,
+   href,
+   className,
+   disabled,
+   type,
+   iconButton,
+}) => {
    const [clickEffect, setClickEffect] = useState(false);
+
+   // handle btn effect
    const navigate = useNavigate();
    const clickHandler = () => {
       setClickEffect(true);
@@ -11,6 +21,7 @@ const BtnContained = ({ dark = false, children, onClick, href, className, disabl
       if (onClick) onClick();
    };
 
+   // Handle dark and light theme
    let color;
    if (dark) {
       color =
@@ -19,17 +30,18 @@ const BtnContained = ({ dark = false, children, onClick, href, className, disabl
       color = "bg-white-gray hover:bg-light-gray text-black-gray";
    }
 
-   let btnStyle
-   if(iconButton){
-      btnStyle = 'rounded-full aspect-square !px-2'
-   }else{
-      btnStyle = ''
+   // haddle icon btn
+   let btnStyle;
+   if (iconButton) {
+      btnStyle = "rounded-full aspect-square !px-2";
+   } else {
+      btnStyle = "";
    }
 
    return (
       <button
-      disabled= {disabled}
-      type={type}
+         disabled={disabled}
+         type={type}
          onClick={clickHandler}
          className={`${color} ${btnStyle}  relative  inline-flex group items-center transition-all duration-200 ease-out justify-center px-4 py-2 m-1 cursor-pointer active:shadow-none shadow-lg overflow-hidden  ${className}`}
       >

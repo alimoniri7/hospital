@@ -1,9 +1,6 @@
 
 import React from "react";
 
-// hooks
-// import useHover from "@/hooks/useHover";
-
 // icons
 import Check from "../../assets/icons/Check";
 
@@ -14,7 +11,6 @@ const CheckBox = ({
    onChange,
    isHovered
 }) => {
-   // const [hoverRef, isHovered] = useHover();
 
    let newSize = "medium";
    switch (size) {
