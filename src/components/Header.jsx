@@ -4,12 +4,15 @@ import MRI from '../assets/images/mri.jpg'
 import BloodTest from '../assets/images/SBjpg.jpg'
 import sergury from '../assets/images/rooms.jpg'
 import BtnBanner from './buttons/BtnBanner';
+import Slider from './slider/Slider';
+
+
 
 const Header = () => {
     return (
         <header className=' container flex gap-6 flex-col lg:flex-row mx-auto mt-10 lg:px-16 px-5 '>
-            <div className='w-full lg:w-1/2 aspect-square bg-error'>
-                
+            <div className='w-full lg:w-1/2 aspect-square '>
+                <Slider/>
             </div>
             <div className='w-full lg:w-1/2  flex flex-col gap-6'>
                 <div className='w-full flex flex-col lg:flex-row gap-6 '>

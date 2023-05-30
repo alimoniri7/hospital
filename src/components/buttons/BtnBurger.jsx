@@ -7,7 +7,7 @@ const BtnBurger = ({isOpen , setIsOpen, className, dashboard = false}) => {
 
   return (
     <button
-      className={`${className} ${dashboard ? 'md:hidden' : 'sm:hidden'} flex  flex-col h-12 w-12 justify-center items-center group z-20`}
+      className={`${className} ${dashboard ? 'md:hidden' : 'sm:hidden'} flex  flex-col h-12 w-12 justify-center items-center group z-30`}
       onClick={() => setIsOpen(!isOpen)}
     >
       <div

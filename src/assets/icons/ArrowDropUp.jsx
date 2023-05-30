@@ -2,7 +2,7 @@ import React from "react";
 
 const ArrowDropUp = ({className, fill= 'none'}) => {
    return (
-      <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width='25px' height='25px'>
+      <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width='30px' height='30px'>
          {" "}
          <g>
             {" "}

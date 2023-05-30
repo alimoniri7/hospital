@@ -17,6 +17,6 @@
     font-size: 14px;
   }
   .light-box {
-    @apply fixed top-0 left-0 backdrop-blur-sm  bg-black/30 block  w-screen min-h-screen h-full overflow-hidden z-50
+    @apply fixed top-0 left-0 backdrop-blur-sm  bg-black/30 block  w-screen min-h-screen h-full overflow-hidden z-20
   }
 }
