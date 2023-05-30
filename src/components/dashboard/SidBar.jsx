@@ -20,7 +20,7 @@ const SidBar = () => {
                 </div>
                <h1
                   onClick={toggleMenu}
-                  className="font-[playfair] font-black text-4xl text-center py-4 z-40 w-1/3 "
+                  className="font-[playfair] font-black text-4xl text-center py-4 z-40 w-1/3 md:w-auto"
                >
                   Hospital
                </h1>
