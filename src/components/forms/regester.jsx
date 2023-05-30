@@ -6,6 +6,7 @@ import Input from "./Input";
 import { useNavigate } from "react-router-dom";
 import useOnClickOutside from "../../../hooks/useClickOutside";
 import X from "../../assets/icons/X";
+import { toast } from "react-toastify";
 
 const Regester = ({ isOpen, setIsOpen }) => {
    const [activate, setActivate] = useState({
@@ -64,9 +65,9 @@ const Regester = ({ isOpen, setIsOpen }) => {
 
          }, 1000);
          setIntervalId(myInterval)
-         alert("message sent");
+         toast.success('پیام تایید ارسال شد!')
         } else {
-            alert("invalid phone number");
+            toast.error('شماره تماس معتبر نمیباشد!')
         }
    };
    useEffect(() => {
@@ -75,7 +76,6 @@ const Regester = ({ isOpen, setIsOpen }) => {
         setIsMessageSent(false)
         setTimer(30)
       }
-      console.log(timer);
    }, [timer]);
 // End
 
@@ -101,9 +101,13 @@ useOnClickOutside(formRef,()=> setIsOpen(false))
          phoneValidation.isValid &&
          confirmationValidation.isValid
       ) {
-         navigate("/dashboard");
+         toast.success('وارد شدید!')
+         setTimeout(()=>{
+            navigate("/dashboard");
+
+         },1000)
       } else {
-         alert("check out red fields");
+         toast.warning('فیلد های قرمز را بررسی کنید')
       }
    };
 

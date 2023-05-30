@@ -1,44 +1,41 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 
 import Landing from "./routes/landing";
-import BtnContained from "./components/buttons/BtnContained";
-import Topbar from "./components/layout/Topbar";
 import Dashboard from "./routes/dashboard";
 
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
+
 const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Landing/>,
-  },
-  {
-    path: '/dashboard/:path?',
-    element: <Dashboard/>
-  }
+   {
+      path: "/",
+      element: <Landing />,
+   },
+   {
+      path: "/dashboard/:path?",
+      element: <Dashboard />,
+   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  // <React.StrictMode>
-    <RouterProvider router={router} />
-  // </React.StrictMode>
+   <>
+      <ToastContainer
+         position="top-right"
+         autoClose={5000}
+         hideProgressBar={false}
+         newestOnTop={false}
+         closeOnClick
+         rtl={true}
+         pauseOnFocusLoss
+         draggable
+         pauseOnHover
+         theme="light"
+         toastClassName='!font-[tt] font-medium'
+         
+      />
+      <RouterProvider router={router} />
+   </>
 );
-
-
-
-
-
-// import React from 'react'
-// import ReactDOM from 'react-dom/client'
-// import App from './App.jsx'
-// import './index.css'
-
-// ReactDOM.createRoot(document.getElementById('root')).render(
-//   <React.StrictMode>
-//     <App />
-//   </React.StrictMode>,
-// )

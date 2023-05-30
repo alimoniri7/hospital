@@ -7,6 +7,7 @@ import BtnContained from "../../buttons/BtnContained";
 import Input from "../../forms/Input";
 import styled from "styled-components";
 import { v4 as uuidv4 } from 'uuid';
+import { toast } from "react-toastify";
 
 const InputTag = styled.div`
     padding: 4px 6px 4px 6px ;
@@ -112,6 +113,8 @@ const AddPerson = ({ isOpen, setIsOpen, setPerson, existingPerson }) => {
              height: false,
              weight: false,
             })
+            toast.success('بیمار جدید اظافه شد!')
+
         }else{
             setPerson(prev=>{
                 let index = prev.findIndex(item=> item.id === formData.id);
@@ -123,12 +126,14 @@ const AddPerson = ({ isOpen, setIsOpen, setPerson, existingPerson }) => {
                     }
                 ])
             })
+            toast.success('بیمار مورد نظر ویرایش شد!')
             
         }
         
         
     } else {
-       alert("check out red fields");
+      toast.warning('فیلد های قرمز را بررسی کنید')
+       
     }
  };
 
@@ -140,7 +145,6 @@ const AddPerson = ({ isOpen, setIsOpen, setPerson, existingPerson }) => {
         checkWeight()
         checkPhone()
     }
-    console.log('running');
  },[formData.phone])
 
  useEffect(()=>{

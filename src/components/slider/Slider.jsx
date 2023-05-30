@@ -24,12 +24,9 @@ const Slider = () => {
             spaceBetween={50}
             slidesPerView={1}
             scrollbar={{ draggable: true }}
-            onSwiper={(swiper) => console.log(swiper)}
-            onSlideChange={() => console.log("slide change")}
             className="h-full w-full relative"
             loop
             autoplay={{ delay: 3000 }}
-            pauseOnMouseEnter
             
          >
             <SwiperSlide>
