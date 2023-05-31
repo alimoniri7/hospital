@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
 // Components
 import SidbarMenu from "./SidbarMenu";
@@ -7,12 +7,16 @@ import BtnBurger from "../buttons/BtnBurger";
 // Icons
 import Profile from "../../assets/icons/Profile";
 import { useNavigate } from "react-router-dom";
+import useOnClickOutside from "../../../hooks/useClickOutside";
 
 const SidBar = () => {
    const navigate = useNavigate()
    const paper = "md:w-60 w-full bg-white-gray  md:h-screen ";
    const [isOpen, setIsOpne] = useState(false);
 
+   const sideBarRef = useRef()
+
+   useOnClickOutside(sideBarRef, ()=>setIsOpne(false))
 
    return (
       <div className={`${paper} `}>
@@ -31,7 +35,7 @@ const SidBar = () => {
                   <Profile />
                </div>
             </div>
-            <SidbarMenu isOpne={isOpen} />
+            <SidbarMenu outsideRef={sideBarRef} isOpne={isOpen} />
          </div>
       </div>
    );

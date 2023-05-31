@@ -15,7 +15,7 @@ const Photograph = () => {
          xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
          xmlns:svg="http://www.w3.org/2000/svg"
          xmlns="http://www.w3.org/2000/svg"
-         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlnsXlink="http://www.w3.org/1999/xlink"
          x="0px"
          y="0px"
          width="15px"

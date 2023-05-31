@@ -1,7 +1,7 @@
 import React from 'react';
 import BtnMenu from '../buttons/BtnMenu';
 
-const SidbarMenu = ({isOpne}) => {
+const SidbarMenu = ({isOpne, outsideRef}) => {
     const menu = [
         {
            label: "جواب گیری",
@@ -22,7 +22,7 @@ const SidbarMenu = ({isOpne}) => {
         },
      ];
     return (
-        <div className={`${isOpne ? 'translate-y-16' : '-translate-y-32 '} md:translate-y-0 z-40  bg-white-gray absolute top-0 left-0 md:static transition-all ease-out duration-200 flex flex-col md:w-56 w-full`}>
+        <div ref={outsideRef} className={`${isOpne ? 'translate-y-16' : '-translate-y-32 '} md:translate-y-0 z-40  bg-white-gray absolute top-0 left-0 md:static transition-all ease-out duration-200 flex flex-col md:w-56 w-full`}>
             {
                 menu.map(p=><BtnMenu item={p} key={p.label} />)
             }
