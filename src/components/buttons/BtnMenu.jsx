@@ -1,7 +1,7 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 // Router
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 // Hooks
 import useOnClickOutside from "../../../hooks/useClickOutside";
@@ -10,6 +10,8 @@ const BtnMenu = ({ item }) => {
    const navigate = useNavigate();
    const [isOpen, setIsOpen] = useState(false)
    const ref = useRef()
+
+   const [IsSubMenuClicked, setIsSubMenuClicked] = useState(false)
    
    const toggleMenu = ()=>{
       setIsOpen(prev=> !prev)
@@ -18,13 +20,26 @@ const BtnMenu = ({ item }) => {
    const closeMenu = ()=> setIsOpen(false)
    useOnClickOutside(ref, closeMenu )
 
+   const { path} = useParams()
+
+   useEffect(()=>{
+      if (item.submenu) {
+         if(item.submenu.find( subItem => subItem.path === `/dashboard/${path}`)) {
+            setIsSubMenuClicked(true)
+         }else{
+            setIsSubMenuClicked(false)
+         }
+      }
+   }, [path])
+
+
    return (
       <button
       ref={ref}
          onClick={() => !item.submenu && navigate(item.path)}
-         className="group "
+         className=" "
       >
-         <div onClick={toggleMenu}  className="flex items-center justify-between h-12 px-3 font-medium  group-focus:bg-light-gray bg-white-gray hover:bg-light-gray text-black-gray relative   group  transition-all duration-200 ease-out   py-2 m-1 cursor-pointer active:shadow-none shadow-lg overflow-hidden">
+         <div onClick={toggleMenu}  className={` ${item.path === `/dashboard/${path}` || IsSubMenuClicked ? 'bg-dark-gray hover:bg-dark-gray text-white' : 'bg-white-gray' } flex items-center justify-between h-12 px-3 font-medium    hover:bg-light-gray text-black-gray relative   group  transition-all duration-200 ease-out   py-2 m-1 cursor-pointer active:shadow-none shadow-lg overflow-hidden`}>
             <span className="truncate text-base">{item.label}</span>
 
             {item.submenu && (
@@ -46,13 +61,13 @@ const BtnMenu = ({ item }) => {
          {item.submenu && (
             <div className={`${isOpen ? 'max-h-40' : 'max-h-0'}  overflow-hidden duration-300  divide-y-2 divide-light-gray bg-white`}>
                {item.submenu.map((subItem) => (
-                  <a
+                  <Link
                   key={subItem.path}
-                     className="flex items-center h-8 px-7 py-6 text-md hover:bg-light-gray"
-                     href={subItem.path}
+                     className={`${subItem.path === `/dashboard/${path}` ? 'bg-gray text-white hover:bg-gray' : 'bg-white-gray' } flex items-center h-8 px-7 py-6 text-md hover:bg-light-gray`}
+                     to={subItem.path}
                   >
                      {subItem.label}
-                  </a>
+                  </Link>
                ))}
             </div>
          )}
